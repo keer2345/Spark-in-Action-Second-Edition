@@ -219,7 +219,7 @@ dataframe 是一个强大的工具，您将在整本书和您与 Spark 的旅程
 - 执行示例，该示例将加载基本CSV文件并显示一些行。
 
 ## 推荐软件
-详细的安装请看*[附录A](appendix/A.md)*和*[附录B](appendix/B.md)*。
+详细的安装请看[附录A](appendix/A.md)和[附录B](appendix/B.md)。
 
 本书使用以下软件：
 - Apache Spark 3.0.0
@@ -245,7 +245,7 @@ mvn clean install exec:exec
 
 **在Eclipse运行**
 
-参考*[附录D](appendix/D.md)*，点击 `src/main/java/net.jgp.books.spark.ch01.lab100_csv_to_dataframe/CsvToDataframeApp.java` 右键，`Run As` -> `2 Java Application`:
+参考[附录D](appendix/D.md)，点击 `src/main/java/net.jgp.books.spark.ch01.lab100_csv_to_dataframe/CsvToDataframeApp.java` 右键，`Run As` -> `2 Java Application`:
 
 ![](https://drek4537l1klr.cloudfront.net/perrin/HighResolutionFigures/figure_1-8.png)
 
