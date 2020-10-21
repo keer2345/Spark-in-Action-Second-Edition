@@ -5,6 +5,8 @@
 >
 > https://livebook.manning.com/book/spark-in-action-second-edition/chapter-1/48
 
+
+
 本章内容：
 - 什么是 Spark 及其使用场景
 - 分布式技术的基础
@@ -20,6 +22,33 @@
 
 
 本章试验可以在这里找到：https://github.com/jgperrin/net.jgp.books.spark.ch01
+
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [Spark是什么以及能做些什么](#spark是什么以及能做些什么)
+    - [Spark是什么](#spark是什么)
+    - [四大支柱](#四大支柱)
+- [如何使用Spark](#如何使用spark)
+    - [数据处理/工程场景中的Spark](#数据处理工程场景中的spark)
+    - [数据科学场景中的Spark](#数据科学场景中的spark)
+- [可以用Spark做什么](#可以用spark做什么)
+    - [Spark预测NC餐馆的餐厅质量](#spark预测nc餐馆的餐厅质量)
+    - [Spark允许Lumeris快速传输数据](#spark允许lumeris快速传输数据)
+    - [Spark分析CERN的设备日志](#spark分析cern的设备日志)
+    - [其他用例](#其他用例)
+- [为什么您会喜欢dataframe](#为什么您会喜欢dataframe)
+    - [Java角度的dataframe](#java角度的dataframe)
+    - [数据格式的图形表示](#数据格式的图形表示)
+- [你的第一个例子](#你的第一个例子)
+    - [推荐软件](#推荐软件)
+    - [下载代码](#下载代码)
+    - [运行第一个应用](#运行第一个应用)
+    - [第一个代码](#第一个代码)
+- [总结](#总结)
+
+<!-- markdown-toc end -->
+
 
 # Spark是什么以及能做些什么
 ## Spark是什么
@@ -153,3 +182,154 @@ Spark 参与了许多其他用例，其中包括：
 - 构建交互式数据整理工具，例如 IBM 的 Watson Studio 和 Databricks 的笔记本
 - 监视 MTV 或 Nickelodeon 等电视频道的视频馈送质量
 - 通过 Riot Games 公司监控在线视频游戏玩家的不良行为，并准实时调整玩家互动，以最大化所有玩家的积极体验。
+
+# 为什么您会喜欢dataframe
+
+在本部分中，我的目标是使您喜欢该 dataframe。 您将学到足够多的知识，想发现更多，这将在您深入学习第3章和整本书时进行。 dataframe 既是数据容器又是 API。
+
+dataframe 的概念对于 Spark 至关重要。 但是，这个概念并不难理解。 您将一直使用 dataframe。 在本节中，您将从 Java（软件工程师）和 RDBMS（数据工程师）的角度看一下数据框是什么。 一旦您熟悉了一些类比，我将总结一个图表。
+
+## Java角度的dataframe
+
+如果您的背景是 Java，并且具有 Java 数据库连接（JDBC）经验，则数据框将看起来像 `ResultSet`。 它包含数据； 它有一个 API ...
+
+ResultSet 和 dataframe 的相似性如下:
+- 数据可以通过一个简单的 API 访问。
+- 您可以访问 Schema。
+
+以下是一些不同之处:
+- 数据可以嵌套，比如在 JSON 或 XML 文档中。第7章描述了这些文档的获取，您将在第13章中使用这些嵌套结构。
+- 你不需要更新或删除整行;您创建了新的数据仓库。
+- 您可以轻松地添加或删除列。
+- 在dataframe上没有约束、索引、主键或外键或触发器。
+
+## 数据格式的图形表示
+
+dataframe 是一个强大的工具，您将在整本书和您与 Spark 的旅程中使用它。它强大的 API 和存储能力使它成为辐射一切的关键元素。图1.7显示了一种想象 API、实现和存储的方法。
+
+![](https://drek4537l1klr.cloudfront.net/perrin/HighResolutionFigures/figure_1-7.png)
+
+# 你的第一个例子
+
+现在是看第一个例子的时候了。您的目标是通过一个简单的应用程序运行 Spark ，该应用程序将读取文件，将其内容存储在一个 dataframe 中，并显示结果。您将学习如何设置您的工作环境，您将在本书中使用这些环境。您还将学习如何与 Spark 交互并执行基本操作。
+
+执行以下操作：
+- 安装您可能已经拥有的基本软件：*Git*，*Maven*，*Eclipse*。
+- 通过从 *GitHub* 克隆代码来下载代码。
+- 执行示例，该示例将加载基本CSV文件并显示一些行。
+
+## 推荐软件
+详细的安装请看*[附录A](appendix/A.md)*和*[附录B](appendix/B.md)*。
+
+本书使用以下软件：
+- Apache Spark 3.0.0
+- MacOS Catalina 或 Ubuntu14~18 或 Windows10
+- Java8。虽然 Java11 也适合，但大多数企业使用的版本仍然较低，到目前为止，只有 Spark v3 才通过 Java 11 认证。
+
+示例将使用命令行或Eclipse。对于命令行，您可以使用以下命令:
+- Maven 3.6.3
+- Git 2.28.0
+
+项目使用 Maven 的 pom.xml 结构，该结构可以导入或直接在许多集成开发环境（IDE）中使用。 但是，所有可视示例都将使用 Eclipse。 您可以使用 4.7.1a（Eclipse Oxygen）之前的任何早期版本的 Eclipse，但是 Eclipse 的 Oxygen 版本中增强了 Maven 和 Git 的集成。 我强烈建议您至少使用 Oxygen 发行版，到目前为止，这些发行版还很旧。
+
+## 下载代码
+
+https://github.com/jgperrin/net.jgp.books.spark.ch01
+
+## 运行第一个应用
+**在命令行运行**
+```
+cd net.jgp.books.spark.ch01
+mvn clean install exec:exec
+```
+
+**在Eclipse运行**
+
+参考*[附录D](appendix/D.md)*，点击 `src/main/java/net.jgp.books.spark.ch01.lab100_csv_to_dataframe/CsvToDataframeApp.java` 右键，`Run As` -> `2 Java Application`:
+
+![](https://drek4537l1klr.cloudfront.net/perrin/HighResolutionFigures/figure_1-8.png)
+
+用上面两种方式运行之后，都可以看到下面的结果：
+```
++---+--------+--------------------+-----------+--------------------+
+| id|authorId|               title|releaseDate|                link|
++---+--------+--------------------+-----------+--------------------+
+|  1|       1|Fantastic Beasts ...|   11/18/16|http://amzn.to/2k...|
+|  2|       1|Harry Potter and ...|    10/6/15|http://amzn.to/2l...|
+|  3|       1|The Tales of Beed...|    12/4/08|http://amzn.to/2k...|
+|  4|       1|Harry Potter and ...|    10/4/16|http://amzn.to/2k...|
+|  5|       2|Informix 12.10 on...|    4/23/17|http://amzn.to/2i...|
++---+--------+--------------------+-----------+--------------------+
+only showing top 5 rows
+```
+接下来，我们来了解发生了什么。
+
+## 第一个代码
+终于，您开始编码了!在上一节中，您看到了输出。现在运行您的第一个应用程序。它将获取一个会话，要求 Spark 加载一个 CSV 文件，然后显示数据集的5行(最多)。
+
+说到显示代码，存在两种学派：一种学派是显示摘要，另一种学派是显示所有代码。我属于后一种类型：我喜欢完整的例子，而不是片面的，因为我不想让你去找出缺失的部分或需要的包，即使它们是明显的。
+``` java
+package net.jgp.books.spark.ch01.lab100_csv_to_dataframe;
+
+import org.apache.spark.sql.Dataset;
+import org.apache.spark.sql.Row;
+import org.apache.spark.sql.SparkSession;
+
+/**
+ * CSV ingestion in a dataframe.
+ * 
+ * @author jgp
+ */
+public class CsvToDataframeApp {
+
+  /**
+   * main() is your entry point to the application.
+   * 
+   * @param args
+   */
+  public static void main(String[] args) {
+    CsvToDataframeApp app = new CsvToDataframeApp();
+    app.start();
+  }
+
+  /**
+   * The processing code.
+   */
+  private void start() {
+    // Creates a session on a local master
+    SparkSession spark = SparkSession.builder()
+        .appName("CSV to Dataset")
+        .master("local")
+        .getOrCreate();
+
+    // Reads a CSV file with header, called books.csv, stores it in a
+    // dataframe
+    Dataset<Row> df = spark.read().format("csv")
+        .option("header", "true")
+        .load("data/books.csv");
+
+    // Shows at most 5 rows from the dataframe
+    df.show(5);
+  }
+}
+```
+尽管该示例很简单，但是您已经完成了以下工作：
+- 安装了使用Spark所需的所有组件。 （是的，就是这么简单！）
+- 创建一个可以执行代码的会话。
+- 加载了CSV数据文件。
+- 显示此数据集的五行。
+
+现在，您可以更深入地了解 Apache Spark，并进一步了解其幕后知识。
+
+# 总结
+- Spark 是一个分析操作系统。 您可以使用它以分布式方式处理工作量和算法。 它不仅对分析有好处：您可以使用 Spark 进行数据传输，海量数据转换，日志分析等。
+- Spark 支持将 SQL，Java，Scala，R 和 Python 作为编程接口，但在本书中，我们重点介绍 Java（有时是 Python）。
+- Spark 的内部主要数据存储是数据框。 该数据帧将存储容量与 API 结合在一起。
+- 如果您具有 JDBC 开发的经验，那么您会发现与 JDBC `ResultSet` 有相似之处。
+- 如果您有关系数据库开发的经验，则可以将数据框与具有较少元数据的表进行比较。
+- 在 Java 中，数据帧被实现为 `Dataset <Row>`。
+- 您可以使用 Maven 和 Eclipse 快速设置 Spark。 无需安装 Spark。
+- Spark 不仅限于 MapReduce 算法：其 API 允许将许多算法应用于数据。
+- 由于企业希望访问实时分析，因此流媒体在企业中的使用越来越频繁。 Spark 支持流式传输。
+- 分析已从简单的联接和聚合演变而来。 企业希望计算机为我们思考。 因此，Spark 支持机器学习和深度学习。
+- 图是分析的一种特殊用例，但是，Spark 支持它们。
