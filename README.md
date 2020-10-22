@@ -15,10 +15,11 @@ Spark分布式数据处理平台提供了一个易于实现的工具，用于从
 
 **关于这本书**
 
-《 Spark in Action，第二版》教会您创建端到端分析应用程序。 在这本全新的书中，您将学习基于Java的有趣示例，包括用于处理NASA卫星数据的完整数据管道。 而且，您会发现可以托管和查找在GitHub上托管的Java，Python和Scala代码示例，以及附录，这些附录为您提供了用于安装工具和理解Spark特定术语的备忘单。
+《Spark in Action》（第二版）教会您创建端到端分析应用程序。 在这本全新的书中，您将学习基于Java的有趣示例，包括用于处理NASA卫星数据的完整数据管道。 而且，您会发现可以托管和查找在GitHub上托管的Java，Python和Scala代码示例，以及附录，这些附录为您提供了用于安装工具和理解Spark特定术语的备忘单。
 
 **Contents**
 1. [So, what is Spark, anyway?](https://github.com/keer2345/Spark-in-Action-Second-Edition/blob/main/doc/chapter01.md)
+1. [Architecture and flow](https://github.com/keer2345/Spark-in-Action-Second-Edition/blob/main/doc/chapter02.md)
 
 - [Appendix A](https://github.com/keer2345/Spark-in-Action-Second-Edition/blob/main/doc/appendix/A.md) Installing Eclipse
 - [Appendix B](https://github.com/keer2345/Spark-in-Action-Second-Edition/blob/main/doc/appendix/B.md) Installing Maven

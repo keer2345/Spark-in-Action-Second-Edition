@@ -1,5 +1,8 @@
 **附录A：安装Eclipse**
 
+
+> iooffqqx <> sharklasers.com 123456
+
 # [Eclipse](https://www.eclipse.org/)
 
 Eclipse Installer offers installation options. I recommend Eclipse IDE for Java EE Developers.

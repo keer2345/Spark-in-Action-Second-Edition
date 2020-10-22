@@ -1,9 +1,7 @@
 **第一章 什么是Spark**
 
 
-> iooffqqx <> sharklasers.com 123456
->
-> https://livebook.manning.com/book/spark-in-action-second-edition/chapter-1/48
+> [iooffqqx <> sharklasers.com 123456](https://livebook.manning.com/book/spark-in-action-second-edition/chapter-1/48)
 
 
 
@@ -327,7 +325,7 @@ public class CsvToDataframeApp {
 - Spark 的内部主要数据存储是数据框。 该数据帧将存储容量与 API 结合在一起。
 - 如果您具有 JDBC 开发的经验，那么您会发现与 JDBC `ResultSet` 有相似之处。
 - 如果您有关系数据库开发的经验，则可以将数据框与具有较少元数据的表进行比较。
-- 在 Java 中，数据帧被实现为 `Dataset <Row>`。
+- 在 Java 中，数据帧被实现为 `Dataset<Row>`。
 - 您可以使用 Maven 和 Eclipse 快速设置 Spark。 无需安装 Spark。
 - Spark 不仅限于 MapReduce 算法：其 API 允许将许多算法应用于数据。
 - 由于企业希望访问实时分析，因此流媒体在企业中的使用越来越频繁。 Spark 支持流式传输。
